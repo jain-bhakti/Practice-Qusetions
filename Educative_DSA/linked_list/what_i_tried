@@ -1,0 +1,75 @@
+def remove_dupes(self):
+        dic = {}
+        itr = self.head
+        while itr:
+            if itr.data not in dic:
+                dic[itr.data] = 1
+            else:
+                dic[itr.data] += 1
+
+            itr = itr.next
+        itr = self.head
+        while itr:
+            if dic[itr.data] > 1:
+                self.delete_by_value(itr.data)
+                dic[itr.data] -= 1
+            itr = itr.next
+        print(dic)
+        
+
+def move_tail_to_head(self):
+  if self.head and self.head.next:
+    last = self.head 
+    second_to_last = None
+    while last.next:
+        second_to_last = last
+        last = last.next
+    last.next = self.head 
+    second_to_last.next = None 
+    self.head = last
+
+--------------sum two linked list--------------------------------
+    def sum_2_LL(self,ll2):
+        num1 = self.head.data
+        num2 = ll2.head.data
+        sum = 0
+       
+        itr = self.head.next
+        i = 1
+        while itr:
+            num1 = num1*10 + itr.data
+            itr = itr.next
+
+        itr = ll2.head.next
+        i = 1
+        while itr:
+            num2 = num2*10 + itr.data
+            itr = itr.next
+
+        sum = num1+num2
+        result = LinkedList()
+        while sum>0 :
+            r = sum%10
+            result.prepend(r)
+            sum = sum//10
+
+        return result
+
+-----------Bitonic--------------------------------
+#1arr = [1,2,3,4,5,4,3,2,1]
+#arr = [1,6,5,4,3,2,1]
+arr = [1, 2, 3, 4, 5]
+peak = arr[0]
+
+low = 0
+high = len(arr)-1
+while low<=high:
+    mid = (low+high)//2
+    if arr[mid] > peak:
+        peak = arr[mid]
+    
+    elif arr[mid] < peak:
+        low = mid+1
+    else:
+        high = mid-1
+print(peak)
