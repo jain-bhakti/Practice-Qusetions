@@ -1,0 +1,14 @@
+---> 1143 leetcode
+
+text1 = "bsbininm"
+text2 = "jmjkbkjkv"
+count = 0
+j = 0
+n = len(text1)
+for i in range(len(text1)):
+    if text1[i] in text2[j:]:
+        count += 1  
+        j += i 
+    else:
+        i -= 1
+print(count)
